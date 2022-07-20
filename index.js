@@ -31,7 +31,12 @@ async function run() {
             res.send(students);
         })
 
-
+        // add new student
+        app.post('/students', async (req, res) => {
+            const student = req.body;
+            const result = await studentsCollection.insertOne(student);
+            res.send(result);
+        })
 
     }
     finally {
